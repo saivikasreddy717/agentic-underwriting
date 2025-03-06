@@ -1,3 +1,19 @@
+# app/streamlit_app.py
+import sys, os
+from dotenv import load_dotenv  # Import the package
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Now you can access your API key via os.getenv
+api_key = os.getenv('API_KEY')
+
+# Optional: Print to verify (remove or comment out in production)
+#print("Loaded API Key:", api_key)
+
+# Add the parent directory to sys.path so that agents and models are importable
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 import streamlit as st
 from agents.underwriting_agent import underwriting_agent
 from models.rag_pipeline import setup_vector_store
